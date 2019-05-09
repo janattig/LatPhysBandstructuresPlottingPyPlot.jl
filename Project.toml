@@ -1,0 +1,10 @@
+name = "LatPhysBandstructuresPlottingPyPlot"
+uuid = "66177000-74be-527b-8584-e3f8efd22c83"
+authors = ["Jan Attig <jattig@thp.Uni-Koeln.DE>"]
+version = "0.1.0"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
