@@ -102,5 +102,16 @@ function plotBandstructure(
     return fig
 end
 
+# pass unknown arguments directly to construction of band structure
+function plotBandstructure(
+        args...
+        ;
+        kwargs...
+    )
+
+    # create and plot a bandstructure
+    plotBandstructure(Bandstructure(args...); kwargs...)
+end
+
 # export the function
 export plotBandstructure
