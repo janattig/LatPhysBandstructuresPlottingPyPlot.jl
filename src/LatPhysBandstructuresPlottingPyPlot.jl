@@ -31,6 +31,9 @@ import PyPlot.plot
 
 
 
+# include plotting of bandstructures
+include("plotting_bandstructures/bandstructure_plotting.jl")
+
 
 
 end # module
