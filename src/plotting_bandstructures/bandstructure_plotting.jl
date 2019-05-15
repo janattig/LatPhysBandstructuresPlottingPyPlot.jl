@@ -8,7 +8,7 @@
 function plotBandstructure(
             bs :: BS
             ;
-            new_figure :: Bool = false,
+            new_figure :: Bool = true,
             figsize :: Tuple = (6,4),
             color :: Vector{<:Integer} = [0,0,255],
             kwargs...
