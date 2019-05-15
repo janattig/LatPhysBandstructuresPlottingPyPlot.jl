@@ -48,7 +48,7 @@ function plotBandstructure(
             kappa::Float64;
             limits_energy="AUTO",
             plot_title::String="",
-            
+
             plot_color_valid="b",
             plot_color_invalid="r",
             figsize::Tuple=(6,4),
@@ -60,8 +60,8 @@ function plotBandstructure(
     #   INITIAL SETTINGS
     ###########################
 
-   
-   
+
+
     # get the path from the bandstructure
     path = bandstructure.path
 
@@ -79,25 +79,25 @@ function plotBandstructure(
     ###########################
 
     # plot the band structure
-   
+
     for s in 1:length(bandstructure.bands)
         # plot the segment (only invalid stuff)
         for b in 1:length(bandstructure.bands[s])
             # xvalues
             xvals = collect(1:segment_resolution[s]) .+ sum(segment_resolution[1:s-1])
             yvals = bandstructure.bands[s][b]
-        
+
             # plot everything
             plot(
                 xvals,yvals,color = [color[cnum].r,color[cnum].g,color[cnum].b])
-               
+
         end
-        
-       
+
+
     end
-       
-  
-    
+
+
+
     ###########################
     #   SET ALL TICKS (POINTS)
     ###########################
@@ -111,7 +111,7 @@ function plotBandstructure(
     for l in 1:length(segment_resolution)
         push!(point_pos, sum(segment_resolution[1:l]))
     end
-   
+
     point_labels = String[point(path,i).label_LaTeX for i in 1:numPoints(path)]
     # configure tick labels
     xticks(point_pos, point_labels)
@@ -126,7 +126,7 @@ function plotBandstructure(
         axvline(p,color=[0.6, 0.6, 0.6], linestyle="--")
     end
 
-   
+
     ###########################
     #   CONFIGURE AXIS & TITLE
     ###########################
@@ -134,7 +134,7 @@ function plotBandstructure(
     # label the axis
     xlabel("momentum")
     ylabel("energy")
-    
+
 
     # energy limits
     # check if specific boundaries are desired
@@ -189,7 +189,7 @@ function plotBandstructure(
     return fig
 end
 
-    
+
 function plotBandstructure(
             unitcell :: U,
             path :: RPA,
@@ -204,7 +204,7 @@ function plotBandstructure(
             showPlot::Bool=true,
             save_filename::String="NONE"
         ) where {L,NB,S,B<:AbstractBond{L,NB},U<:AbstractUnitcell{S,B},HB<:AbstractBondHamiltonian{L,NS} where {NS}, RPA<: AbstractReciprocalPath{P} where {P <: AbstractReciprocalPoint{D} where {D}}}
-    
+
     # calculate the bandstructure
     bandstructure = getBands(unitcell, path, bondInteractionMatrix, segment_resolution, enforce_hermitian=enforce_hermitian)
     # call the respective function
@@ -220,4 +220,3 @@ function plotBandstructure(
             )
 end
 export plotBandstructure
-
