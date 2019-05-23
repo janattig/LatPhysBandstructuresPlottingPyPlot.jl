@@ -110,7 +110,7 @@ function plotBandstructure(
     )
 
     # create and plot a bandstructure
-    plotBandstructure(Bandstructure(args...); kwargs...)
+    plotBandstructure(getBandstructure(args...); kwargs...)
 end
 
 # export the function
