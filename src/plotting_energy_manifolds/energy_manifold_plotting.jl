@@ -10,8 +10,10 @@ function plotEnergyManifold(
             ;
             new_figure :: Bool = true,
             figsize :: Tuple = (6,6),
-            color :: Vector{<:Integer} = [0,0,255],
+            color :: Vector{<:Integer} = [100,120,255],
             plot_bz :: Bool = true,
+            ms :: Real = 5,
+            BZ_corners :: Bool = false,
             kwargs...
         ) where {LS,S<:AbstractSite{LS,2},L,B,UC<:AbstractUnitcell{S,B},HB,H<:AbstractHamiltonian{L,UC,HB}, AEM <: AbstractEnergyManifold{H}}
 
@@ -23,7 +25,7 @@ function plotEnergyManifold(
     # create a new figure
     if plot_bz && new_figure
         # plot the brillouin zone
-        plotBrillouinZone(getBrillouinZone(unitcell(hamiltonian(em))), figsize=figsize)
+        plotBrillouinZone(getBrillouinZone(unitcell(hamiltonian(em))), figsize=figsize, BZ_corners=BZ_corners)
         # get the figure
         fig = gcf()
     elseif new_figure
@@ -45,7 +47,7 @@ function plotEnergyManifold(
     ky = [k[2] for k in k_points]
 
     # scatter all points
-    scatter(kx,ky, color=color./255)
+    scatter(kx,ky, color=color./255, s=ms)
 
 
 
@@ -76,8 +78,10 @@ function plotEnergyManifold(
             ;
             new_figure :: Bool = true,
             figsize :: Tuple = (6,6),
-            color :: Vector{<:Integer} = [0,0,255],
+            color :: Vector{<:Integer} = [100,120,255],
             plot_bz :: Bool = true,
+            ms :: Real = 5,
+            BZ_corners :: Bool = false,
             kwargs...
         ) where {LS,S<:AbstractSite{LS,3},L,B,UC<:AbstractUnitcell{S,B},HB,H<:AbstractHamiltonian{L,UC,HB}, AEM <: AbstractEnergyManifold{H}}
 
@@ -89,7 +93,7 @@ function plotEnergyManifold(
     # create a new figure
     if plot_bz && new_figure
         # plot the brillouin zone
-        plotBrillouinZone(getBrillouinZone(unitcell(hamiltonian(em))), figsize=figsize)
+        plotBrillouinZone(getBrillouinZone(unitcell(hamiltonian(em))), figsize=figsize, BZ_corners=BZ_corners)
         # get the figure
         fig = gcf()
     elseif new_figure
@@ -112,7 +116,7 @@ function plotEnergyManifold(
     kz = [k[3] for k in k_points]
 
     # scatter all points
-    scatter3D(kx,ky,kz, color=color./255)
+    scatter3D(kx,ky,kz, color=color./255, s=ms)
 
 
 

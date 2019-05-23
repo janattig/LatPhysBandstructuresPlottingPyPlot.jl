@@ -10,7 +10,7 @@ function plotBandstructure(
             ;
             new_figure :: Bool = true,
             figsize :: Tuple = (6,4),
-            color :: Vector{<:Integer} = [0,0,255],
+            color :: Vector{<:Integer} = [100,120,255],
             kwargs...
         ) where {RP, P<:AbstractReciprocalPath{RP}, L,UC,HB,H<:AbstractHamiltonian{L,UC,HB}, BS <: AbstractBandstructure{P,H}}
 
