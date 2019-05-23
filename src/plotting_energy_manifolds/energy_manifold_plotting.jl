@@ -139,3 +139,18 @@ end
 
 # export plotting function
 export plotEnergyManifold
+
+
+
+
+
+# pass unknown arguments directly to construction of band structure
+function plotEnergyManifold(
+        args...
+        ;
+        kwargs...
+    )
+
+    # create and plot a bandstructure
+    plotEnergyManifold(getEnergyManifold(args...); kwargs...)
+end
