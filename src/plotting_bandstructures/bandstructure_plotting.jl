@@ -47,9 +47,11 @@ function plotBandstructure(
         # plotting segment s, collecting x values for bands
         xvals = range(k_point_indices[s], stop=k_point_indices[s+1], length=length(energies(bs)[s][1]))
         # plot all bands
-        for band in energies(bs)[s]
-            plot(xvals,band, color=color./255)
+        bands = zeros(Float64, length(energies(bs)[s][1]), length(energies(bs)[s]))
+        for b in 1:length(energies(bs)[s])
+            bands[:,b] .= energies(bs)[s][b]
         end
+        plot(xvals,bands, color=color./255)
     end
 
 
