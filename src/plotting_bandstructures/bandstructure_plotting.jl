@@ -71,7 +71,7 @@ function plotBandstructure(
 
     # configure ticks on x axis
     axx.set_tick_params(which="both", direction="out")
-    axx.set_tick_params(which="top", color="none")
+    #axx.set_tick_params(which="top", color="none")
 
     # configure ticks on x axis
     axy = ax.get_yaxis()
